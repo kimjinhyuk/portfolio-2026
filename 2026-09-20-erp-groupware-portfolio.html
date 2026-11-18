@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김진혁 | 그룹웨어·ERP 포트폴리오</title>
+<style>
+  :root {
+    --ink: #181b19;
+    --muted: #686d69;
+    --paper: #eee9dd;
+    --paper-2: #f8f4e9;
+    --line: #b9b3a4;
+    --accent: #d9541e;
+    --acid: #c4eb59;
+    --dark: #202421;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    background:
+      linear-gradient(rgba(24,27,25,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(24,27,25,.045) 1px, transparent 1px),
+      var(--paper);
+    background-size: 28px 28px;
+    font: 15px/1.65 "Avenir Next", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    word-break: keep-all;
+  }
+  button { font: inherit; }
+  .shell { width: min(1180px, calc(100% - 42px)); margin: 0 auto; }
+  .topbar { display: flex; justify-content: space-between; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--ink); color: var(--muted); font-size: 12px; }
+  .topbar strong { color: var(--ink); letter-spacing: .08em; }
+  .eyebrow { color: var(--accent); font: 800 12px/1.2 "SFMono-Regular", Menlo, monospace; letter-spacing: .16em; text-transform: uppercase; }
+  h1, h2, h3, p { margin-top: 0; }
+  h1 { margin: 15px 0 24px; font-size: clamp(48px, 5vw, 70px); line-height: .98; letter-spacing: -.055em; }
+  h2 { margin: 0; font-size: clamp(34px, 4vw, 54px); line-height: 1.07; letter-spacing: -.045em; text-wrap: balance; }
+  h3 { text-wrap: balance; }
+  .title-line, .heading-line { display: block; white-space: nowrap; }
+  .accent { color: var(--accent); }
+  .hero { display: grid; grid-template-columns: .92fr 1.08fr; gap: 44px; align-items: center; min-height: 700px; padding: 62px 0 76px; }
+  .lead { max-width: 620px; color: #454a46; font-size: 18px; line-height: 1.72; text-wrap: pretty; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips span { padding: 7px 10px; border: 1px solid var(--ink); border-radius: 999px; background: rgba(248,244,233,.55); font-size: 11px; }
+  .hero-screen { position: relative; padding: 18px 18px 52px; border: 1px solid var(--ink); background: var(--dark); box-shadow: 24px 24px 0 rgba(217,84,30,.18); transform: rotate(1deg); }
+  .hero-screen::before { content: "PRIVATE DATA MASKED"; position: absolute; right: 18px; bottom: 15px; color: var(--acid); font: 800 11px/1 monospace; letter-spacing: .12em; }
+  .hero-screen img { display: block; width: 100%; filter: saturate(.75) contrast(1.03); }
+  section { padding: 84px 0; border-top: 1px solid var(--ink); }
+  .section-head { display: grid; grid-template-columns: 205px 1fr; gap: 28px; margin-bottom: 38px; }
+  .section-copy { max-width: 790px; color: #555b56; font-size: 17px; text-wrap: pretty; }
+  .metrics { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--ink); background: var(--ink); gap: 1px; }
+  .metric { min-height: 154px; padding: 25px; background: var(--paper-2); }
+  .metric b { display: block; color: var(--accent); font-size: 38px; line-height: 1; }
+  .metric span { display: block; margin-top: 15px; color: var(--muted); font-size: 12px; }
+  .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .problem { min-height: 235px; padding: 26px; border: 1px solid var(--ink); background: rgba(248,244,233,.72); }
+  .problem .no { display: block; margin-bottom: 42px; color: var(--accent); font: 800 12px/1 monospace; }
+  .problem h3 { margin-bottom: 10px; font-size: 19px; }
+  .problem p { margin: 0; color: var(--muted); font-size: 14px; text-wrap: pretty; }
+  .architecture { display: grid; grid-template-columns: 1fr 42px 1fr 42px 1fr; align-items: stretch; }
+  .arch-box { padding: 27px; border: 1px solid var(--ink); background: var(--paper-2); }
+  .arch-box strong { display: block; margin-bottom: 18px; color: var(--accent); font-size: 17px; }
+  .arch-box span { display: block; margin: 7px 0; color: var(--muted); font-size: 13px; }
+  .arrow { display: grid; place-items: center; color: var(--accent); font: 25px/1 monospace; }
+  .carousel { border: 1px solid var(--ink); background: var(--dark); color: #f5f1e7; }
+  .carousel-stage { position: relative; overflow: hidden; aspect-ratio: 16 / 9.1; }
+  .slide { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr .34fr; opacity: 0; pointer-events: none; transition: opacity .35s ease; }
+  .slide.active { opacity: 1; pointer-events: auto; }
+  .slide img { width: 100%; height: 100%; object-fit: contain; background: #0d0f0e; }
+  .slide-copy { display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; border-left: 1px solid #555b56; }
+  .slide-copy b { color: var(--acid); font: 800 11px/1.3 monospace; letter-spacing: .1em; }
+  .slide-copy h3 { margin: 14px 0 10px; font-size: 24px; line-height: 1.15; }
+  .slide-copy p { margin: 0; color: #bfc5c0; font-size: 13px; text-wrap: pretty; }
+  .carousel-controls { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px; padding: 13px 15px; border-top: 1px solid #555b56; }
+  .carousel-button { width: 42px; height: 42px; border: 1px solid #737b75; color: white; background: transparent; cursor: pointer; }
+  .carousel-button:hover, .carousel-button:focus-visible { color: var(--dark); background: var(--acid); border-color: var(--acid); }
+  .dots { display: flex; justify-content: center; gap: 8px; }
+  .dot { width: 34px; height: 4px; padding: 0; border: 0; background: #666c68; cursor: pointer; }
+  .dot.active { background: var(--acid); }
+  .privacy-note { margin: 14px 0 0; color: var(--muted); font-size: 12px; }
+  .filterbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .filter { padding: 9px 14px; border: 1px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer; }
+  .filter.active, .filter:hover { color: #fff; background: var(--ink); }
+  .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 20px; }
+  .shot { margin: 0; }
+  .shot[hidden] { display: none; }
+  .shot img { display: block; width: 100%; border: 1px solid var(--ink); background: #111; }
+  .shot figcaption { display: grid; grid-template-columns: 90px 1fr; gap: 13px; padding-top: 13px; }
+  .shot b { color: var(--accent); font: 800 11px/1.5 monospace; }
+  .shot span { color: var(--muted); font-size: 13px; text-wrap: pretty; }
+  .ownership { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; border: 1px solid var(--ink); background: var(--ink); }
+  .ownership article { padding: 28px; background: var(--paper-2); }
+  .ownership h3 { color: var(--accent); font-size: 18px; }
+  .ownership ul { margin: 0; padding-left: 18px; color: #4f5550; }
+  .ownership li { margin: 7px 0; }
+  .pipeline { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--ink); }
+  .pipeline article { min-height: 180px; padding: 22px; border-right: 1px solid var(--ink); background: rgba(248,244,233,.72); }
+  .pipeline article:last-child { border-right: 0; }
+  .pipeline b { display: block; margin-bottom: 34px; color: var(--accent); font: 800 12px/1 monospace; }
+  .pipeline strong { display: block; margin-bottom: 8px; }
+  .pipeline span { color: var(--muted); font-size: 12px; }
+  .operations { display: grid; grid-template-columns: 1.35fr .65fr; gap: 24px; align-items: stretch; }
+  .operations figure { margin: 0; padding: 14px; border: 1px solid var(--ink); background: var(--dark); }
+  .operations img { display: block; width: 100%; height: 100%; min-height: 460px; object-fit: cover; object-position: top; }
+  .ops-list { display: grid; gap: 1px; border: 1px solid var(--ink); background: var(--ink); }
+  .ops-list article { padding: 24px; background: var(--paper-2); }
+  .ops-list b { color: var(--accent); font: 800 11px/1.4 monospace; letter-spacing: .08em; }
+  .ops-list h3 { margin: 12px 0 8px; font-size: 18px; }
+  .ops-list p { margin: 0; color: var(--muted); font-size: 13px; text-wrap: pretty; }
+  footer { padding: 44px 0 70px; color: var(--muted); font-size: 12px; }
+  footer strong { color: var(--ink); }
+  @media (max-width: 900px) {
+    .title-line, .heading-line { white-space: normal; }
+    .hero, .section-head { grid-template-columns: 1fr; }
+    .hero { min-height: auto; }
+    .metrics, .problem-grid { grid-template-columns: 1fr 1fr; }
+    .architecture { grid-template-columns: 1fr; gap: 8px; }
+    .arrow { min-height: 32px; transform: rotate(90deg); }
+    .slide { grid-template-columns: 1fr; }
+    .slide-copy { position: absolute; inset: auto 0 0; min-height: 160px; border: 0; background: linear-gradient(transparent, rgba(0,0,0,.92) 28%); }
+    .gallery, .ownership, .operations { grid-template-columns: 1fr; }
+    .pipeline { grid-template-columns: 1fr; }
+    .pipeline article { min-height: auto; border-right: 0; border-bottom: 1px solid var(--ink); }
+  }
+  @media (max-width: 580px) {
+    .shell { width: min(100% - 26px, 1180px); }
+    .topbar { display: block; }
+    .topbar span { display: block; margin-top: 8px; }
+    .metrics, .problem-grid { grid-template-columns: 1fr; }
+    .carousel-stage { aspect-ratio: 4 / 5; }
+  }
+  @page { size: A4; margin: 12mm; }
+  @media print {
+    body { font-size: 10px; }
+    .shell { width: 100%; }
+    .hero { min-height: 0; padding: 32px 0; }
+    section { padding: 38px 0; }
+    .carousel-controls, .filterbar { display: none; }
+    .carousel { border: 0; background: transparent; }
+    .carousel-stage { display: none; }
+    .gallery { grid-template-columns: 1fr 1fr; }
+    .shot[hidden] { display: block; }
+  }
+</style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <strong>JINHYUK KIM / PROJECT PORTFOLIO 02</strong>
+      <span>Head of Advanced Development · Full-Stack &amp; AI Integration · 2025.08–Present</span>
+    </div>
+
+    <header class="hero">
+      <div>
+        <div class="eyebrow">Cutshion Groupware / ERP</div>
+        <h1><span class="title-line">문서를 옮긴 것이 아니라,</span><span class="title-line">회사의 업무 흐름을</span><span class="title-line accent">하나의 운영체계로</span><span class="title-line accent">다시 설계했습니다.</span></h1>
+        <p class="lead">전자결재, 인사·근태, 프로젝트, 메일, 차량, 계약과 일정을 분리된 도구가 아닌 연결된 업무 데이터로 다루고, 로컬 AI 문서 검색과 명함 OCR·AI 구조화까지 제품 안에 통합했습니다.</p>
+        <div class="chips"><span>Next.js 15</span><span>TypeScript</span><span>FastAPI</span><span>SQLModel</span><span>PostgreSQL 16</span><span>pgvector</span><span>OCR + AI</span><span>Docker Compose</span></div>
+      </div>
+      <div class="hero-screen">
+        <img src="assets/erp-portfolio/erp-001-redacted.jpg" alt="개인정보와 내부 수치를 블러 처리한 그룹웨어 ERP 대시보드">
+      </div>
+    </header>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">01 / Context</div>
+        <div><h2><span class="heading-line">수작업과 단절된 도구를</span><span class="heading-line">실제 업무 단위로 연결</span></h2><p class="section-copy">결재 문서, 근태 기록, 프로젝트, 계약과 일정이 서로 다른 기준으로 관리되면 같은 정보를 반복 입력하고 상태를 다시 확인해야 합니다. 요구사항 정의부터 데이터 모델링, 풀스택 개발, 테스트, 온프레미스 배포와 운영까지 맡아 업무의 시작과 완료가 한 시스템 안에서 추적되도록 구축했습니다.</p></div>
+      </div>
+      <div class="metrics">
+        <div class="metric"><b>14</b><span>공통 스키마 엔진으로 전환한 전자결재 양식</span></div>
+        <div class="metric"><b>3-Way</b><span>프론트 계산 · 백엔드 재계산 · 검증</span></div>
+        <div class="metric"><b>Hybrid</b><span>Vector · Trigram · RRF 문서 검색</span></div>
+        <div class="metric"><b>OCR</b><span>명함 이미지 인식 · AI 필드 구조화</span></div>
+        <div class="metric"><b>Self-hosted</b><span>사내 인프라의 임베딩·LLM 운영</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">02 / Problem</div>
+        <div><h2><span class="heading-line">ERP의 난점은 화면 수가 아니라</span><span class="heading-line">규칙과 데이터의 일관성입니다</span></h2></div>
+      </div>
+      <div class="problem-grid">
+        <article class="problem"><span class="no">01</span><h3>양식마다 반복되는 개발</h3><p>결재 종류가 늘 때마다 화면·검증·저장 로직을 복제하면 변경 비용과 오류 가능성이 함께 커집니다.</p></article>
+        <article class="problem"><span class="no">02</span><h3>업무 데이터의 분절</h3><p>휴가, 근태, 프로젝트, 계약, 차량 기록이 따로 움직이면 승인 이후에도 수작업 동기화가 남습니다.</p></article>
+        <article class="problem"><span class="no">03</span><h3>금액 계산의 신뢰성</h3><p>브라우저에서 계산한 값만 저장하면 조작이나 구현 차이로 회계 데이터의 무결성을 보장하기 어렵습니다.</p></article>
+        <article class="problem"><span class="no">04</span><h3>민감 문서의 외부 전송</h3><p>사내 문서 검색과 요약에 외부 AI API를 사용하면 접근권한과 정보 반출 문제가 생길 수 있습니다.</p></article>
+        <article class="problem"><span class="no">05</span><h3>결재 상태의 복잡성</h3><p>상신, 중간 승인, 최종 승인, 반려 과정에서 문서와 연결 업무의 상태가 함께 맞아야 합니다.</p></article>
+        <article class="problem"><span class="no">06</span><h3>사내 배포의 재현성</h3><p>온프레미스 환경에서도 테스트부터 배포까지 같은 절차로 반복할 자동화가 필요했습니다.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">03 / Architecture</div>
+        <div><h2><span class="heading-line">업무 규칙은 공통화하고</span><span class="heading-line">기능은 느슨하게 연결</span></h2><p class="section-copy">사용자 경험, 도메인 규칙, 데이터·AI 계층을 분리해 각각 독립적으로 검증하면서도 결재와 권한 흐름 안에서는 하나의 제품처럼 동작하도록 구성했습니다.</p></div>
+      </div>
+      <div class="architecture">
+        <div class="arch-box"><strong>Experience</strong><span>Next.js 15 · TypeScript</span><span>Dashboard · Approval · HR · Project · Contacts</span><span>즉시 계산과 역할별 업무 화면</span></div>
+        <div class="arrow">→</div>
+        <div class="arch-box"><strong>Business Core</strong><span>FastAPI · SQLModel · Alembic</span><span>JSONB form schema · Workflow plug-ins</span><span>권한 검증과 서버 독립 재계산</span></div>
+        <div class="arrow">→</div>
+        <div class="arch-box"><strong>Data &amp; Intelligence</strong><span>PostgreSQL 16 · pgvector · pg_trgm</span><span>OCR · AI field extraction · bge-m3 · llama.cpp</span><span>Docker Compose · nginx · Gitea Actions</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">04 / Product Tour</div>
+        <div><h2>대표 화면으로 보는 업무 흐름</h2><p class="section-copy">좌우 버튼, 하단 인디케이터 또는 키보드 방향키로 화면을 넘길 수 있습니다. 모든 이미지는 개인정보와 사내 데이터를 식별할 수 없도록 별도 사본에 블러 처리했습니다.</p></div>
+      </div>
+      <div class="carousel" aria-label="그룹웨어 ERP 주요 화면 캐러셀">
+        <div class="carousel-stage">
+          <article class="slide active"><img src="assets/erp-portfolio/erp-001-redacted.jpg" alt="데이터를 마스킹한 통합 대시보드"><div class="slide-copy"><b>01 / WORKSPACE</b><h3>오늘의 업무를 한 화면에</h3><p>결재, 출퇴근, 일정, 할 일, 차량, 휴가와 발주 현황을 역할별 대시보드에서 확인합니다.</p></div></article>
+          <article class="slide"><img src="assets/erp-portfolio/erp-003-redacted.jpg" alt="데이터를 마스킹한 전자결재 작성 화면"><div class="slide-copy"><b>02 / APPROVAL</b><h3>양식이 늘어도 구조는 하나</h3><p>공통 JSONB 스키마와 업무별 플러그인으로 작성·조회·수정·검증을 재사용합니다.</p></div></article>
+          <article class="slide"><img src="assets/erp-portfolio/erp-004-redacted.jpg" alt="데이터를 마스킹한 AI 문서 검색 화면"><div class="slide-copy"><b>03 / LOCAL AI</b><h3>업무 화면 안의 문서 검색</h3><p>키워드와 벡터 검색 결과를 결합하고, 권한 범위 안에서 로컬 LLM 검색·요약을 제공합니다.</p></div></article>
+          <article class="slide"><img src="assets/erp-portfolio/erp-015-redacted.jpg" alt="개인정보를 마스킹한 명함 OCR 처리 화면"><div class="slide-copy"><b>04 / BUSINESS CARD AI</b><h3>명함 이미지를 연락처 데이터로</h3><p>명함을 등록하면 OCR로 텍스트를 인식하고 AI가 이름·회사·직책·연락처 필드로 구조화합니다. 사용자는 결과를 검수한 뒤 주소록에 저장합니다.</p></div></article>
+          <article class="slide"><img src="assets/erp-portfolio/erp-006-redacted.jpg" alt="데이터를 마스킹한 출결 관리 화면"><div class="slide-copy"><b>05 / HR OPS</b><h3>장비 기록과 ERP의 동기화</h3><p>지문기 CSV와 ERP 기록의 차이를 확인하고 근무·지각·결근·초과근무를 운영 데이터로 정리합니다.</p></div></article>
+          <article class="slide"><img src="assets/erp-portfolio/erp-008-redacted.jpg" alt="데이터를 마스킹한 프로젝트 관리 화면"><div class="slide-copy"><b>06 / PROJECT</b><h3>프로젝트와 결재를 같은 맥락에</h3><p>프로젝트 코드, 리더, 우선순위, 기간과 진행률을 관리하고 관련 기안과 구매 현황을 연결합니다.</p></div></article>
+          <article class="slide"><img src="assets/erp-portfolio/erp-018-redacted.jpg" alt="데이터를 마스킹한 계약 관리 화면"><div class="slide-copy"><b>07 / CONTRACT</b><h3>계약과 입금 진행을 함께 추적</h3><p>매출·매입 계약, 기간, 입금 상태, 분할 진행과 계약서 파일을 한 목록에서 관리합니다.</p></div></article>
+          <article class="slide"><img src="assets/erp-portfolio/erp-020-redacted.jpg" alt="데이터를 마스킹한 일정 칸반 화면"><div class="slide-copy"><b>08 / CALENDAR</b><h3>일정은 목록·달력·칸반으로</h3><p>개인·부서·전사 일정을 프로젝트와 연결하고 목적에 따라 서로 다른 뷰에서 운영합니다.</p></div></article>
+          <article class="slide"><img src="assets/erp-portfolio/erp-022-monitoring-redacted.jpg" alt="식별 정보를 마스킹한 Grafana 서버 모니터링 화면"><div class="slide-copy"><b>09 / OPERATIONS</b><h3>배포 이후의 상태까지 관리</h3><p>운영·개발 서버의 CPU, 메모리, 디스크와 AI 추론 서버의 GPU·VRAM 상태를 Grafana에서 함께 관찰합니다.</p></div></article>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-button prev" type="button" aria-label="이전 화면">←</button>
+          <div class="dots" aria-label="화면 선택"></div>
+          <button class="carousel-button next" type="button" aria-label="다음 화면">→</button>
+        </div>
+      </div>
+      <p class="privacy-note">Privacy note — 원본 스크린샷은 포트폴리오에 포함하지 않았으며, 브라우저 주소·사용자 정보·업무 데이터 영역을 비가역적으로 흐린 축소 사본만 사용했습니다.</p>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">05 / Feature Map</div>
+        <div><h2>기능별 화면 카드</h2><p class="section-copy">카테고리 버튼으로 필요한 기능만 골라 볼 수 있습니다. 인쇄 시에는 전체 카드가 자동으로 표시됩니다.</p></div>
+      </div>
+      <div class="filterbar" aria-label="화면 카테고리 필터">
+        <button class="filter active" type="button" data-filter="all">전체</button>
+        <button class="filter" type="button" data-filter="workflow">결재·권한</button>
+        <button class="filter" type="button" data-filter="operations">운영</button>
+        <button class="filter" type="button" data-filter="ai">AI·검색</button>
+      </div>
+      <div class="gallery">
+        <figure class="shot" data-category="operations"><img src="assets/erp-portfolio/erp-001-redacted.jpg" alt="마스킹된 대시보드"><figcaption><b>DASHBOARD</b><span>결재, 출퇴근, 일정, 할 일, 휴가, 차량과 발주 정보를 역할별 카드로 통합했습니다.</span></figcaption></figure>
+        <figure class="shot" data-category="workflow"><img src="assets/erp-portfolio/erp-003-redacted.jpg" alt="마스킹된 기안 작성 화면"><figcaption><b>FORM ENGINE</b><span>14종 양식을 공통 스키마와 플러그인 구조로 전환해 중복 구현을 줄였습니다.</span></figcaption></figure>
+        <figure class="shot" data-category="ai"><img src="assets/erp-portfolio/erp-004-redacted.jpg" alt="마스킹된 AI 문서 검색"><figcaption><b>LOCAL SEARCH</b><span>pgvector와 pg_trgm 결과를 RRF로 결합하고 로컬 LLM과 연결했습니다.</span></figcaption></figure>
+        <figure class="shot" data-category="ai"><img src="assets/erp-portfolio/erp-015-redacted.jpg" alt="마스킹된 명함 OCR 목록"><figcaption><b>OCR PIPELINE</b><span>명함 이미지 등록 후 OCR 처리 상태를 추적하고 AI가 인식 결과를 연락처 필드로 구조화합니다.</span></figcaption></figure>
+        <figure class="shot" data-category="ai"><img src="assets/erp-portfolio/erp-016-redacted.jpg" alt="마스킹된 명함 상세 정보"><figcaption><b>AI EXTRACTION</b><span>이름, 회사, 직책, 전화, 이메일, 웹사이트와 주소를 검수 가능한 구조화 데이터로 저장합니다.</span></figcaption></figure>
+        <figure class="shot" data-category="operations"><img src="assets/erp-portfolio/erp-006-redacted.jpg" alt="마스킹된 출결 관리"><figcaption><b>ATTENDANCE</b><span>외부 지문기 기록을 ERP 데이터와 대조하고 예외와 초과근무를 추적합니다.</span></figcaption></figure>
+        <figure class="shot" data-category="operations"><img src="assets/erp-portfolio/erp-008-redacted.jpg" alt="마스킹된 프로젝트 관리"><figcaption><b>PROJECT</b><span>프로젝트 기본정보와 멤버, 기록, 기안, 구매, 일정을 하나의 업무 맥락으로 묶었습니다.</span></figcaption></figure>
+        <figure class="shot" data-category="workflow"><img src="assets/erp-portfolio/erp-011-redacted.jpg" alt="마스킹된 직급 관리"><figcaption><b>AUTHORITY</b><span>직급과 결재 레벨을 분리해 조직 변화에도 승인 규칙을 관리할 수 있게 했습니다.</span></figcaption></figure>
+        <figure class="shot" data-category="workflow"><img src="assets/erp-portfolio/erp-012-redacted.jpg" alt="마스킹된 결재선 템플릿"><figcaption><b>APPROVAL LINE</b><span>문서 종류와 조건에 따라 결재선을 자동 적용하는 관리 구조를 제공합니다.</span></figcaption></figure>
+        <figure class="shot" data-category="operations"><img src="assets/erp-portfolio/erp-018-redacted.jpg" alt="마스킹된 계약 목록"><figcaption><b>CONTRACT</b><span>계약금액, 수금·지급, 잔액과 단계별 입금 진행을 같은 목록에서 추적합니다.</span></figcaption></figure>
+        <figure class="shot" data-category="operations"><img src="assets/erp-portfolio/erp-020-redacted.jpg" alt="마스킹된 일정 칸반"><figcaption><b>CALENDAR</b><span>개인·부서·전사 일정과 프로젝트 업무를 목록, 달력, 칸반으로 전환해 봅니다.</span></figcaption></figure>
+        <figure class="shot" data-category="operations"><img src="assets/erp-portfolio/erp-022-monitoring-redacted.jpg" alt="마스킹된 Grafana 인프라 대시보드"><figcaption><b>OBSERVABILITY</b><span>운영·개발 VM과 AI 추론 서버의 자원 사용량, 수집 상태와 GPU 지표를 한 대시보드에서 확인합니다.</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">06 / Reliability</div>
+        <div><h2><span class="heading-line">업무 시스템에 필요한 것은</span><span class="heading-line">기능보다 신뢰 가능한 변경입니다</span></h2></div>
+      </div>
+      <div class="pipeline">
+        <article><b>01</b><strong>요구사항</strong><span>실사용자와 업무 규칙·예외·승인 조건 정의</span></article>
+        <article><b>02</b><strong>데이터 모델</strong><span>Alembic 마이그레이션과 권한·상태 구조 설계</span></article>
+        <article><b>03</b><strong>이중 검증</strong><span>프론트 즉시 계산과 백엔드 독립 재계산</span></article>
+        <article><b>04</b><strong>자동 테스트</strong><span>Pytest · Vitest · Playwright로 승인 흐름 검증</span></article>
+        <article><b>05</b><strong>온프레미스 배포</strong><span>Gitea Actions · Docker Compose · nginx 자동화</span></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">07 / Operations</div>
+        <div><h2><span class="heading-line">배포가 끝이 아니라</span><span class="heading-line">운영 상태까지 추적</span></h2><p class="section-copy">ERP 본체와 AI 추론 서버의 역할을 분리하고, 서비스는 외부 리버스 프록시를 통해 제공하되 DB·OCR·LLM 계층은 필요한 범위에서만 접근하도록 구성했습니다.</p></div>
+      </div>
+      <div class="operations">
+        <figure><img src="assets/erp-portfolio/erp-022-monitoring-redacted.jpg" alt="운영과 개발 서버 및 GPU 추론 서버를 모니터링하는 Grafana 대시보드"></figure>
+        <div class="ops-list">
+          <article><b>PROXMOX</b><h3>운영·개발 환경 분리</h3><p>회사 내부 Proxmox VM에 운영과 개발 스택을 분리해 변경과 장애의 영향을 격리했습니다.</p></article>
+          <article><b>NETWORK</b><h3>공개 서비스와 내부 계층 분리</h3><p>웹과 API는 TLS 리버스 프록시로 제공하고, DB와 OCR은 내부 네트워크, LLM은 Tailscale 사설망에서만 접근합니다.</p></article>
+          <article><b>GRAFANA</b><h3>서버·컨테이너·GPU 관찰</h3><p>CPU, 메모리, 디스크, 컨테이너 자원과 GPU·VRAM·온도·전력 지표를 같은 운영 화면에서 추적합니다.</p></article>
+        </div>
+      </div>
+      <p class="privacy-note">Security note — 조직명, 호스트 식별자와 내부 인프라 정보는 포트폴리오용 이미지에서 마스킹했습니다.</p>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">08 / Ownership</div>
+        <div><h2>제가 맡은 범위</h2></div>
+      </div>
+      <div class="ownership">
+        <article><h3>제품·요구사항</h3><ul><li>현업 사용자 인터뷰와 반복 업무 정의</li><li>업무 규칙, 권한, 예외와 화면 흐름 설계</li><li>기존 HTML 문서의 단계적 전환 계획 수립</li></ul></article>
+        <article><h3>풀스택 개발</h3><ul><li>Next.js 15·TypeScript 프론트엔드 구현</li><li>FastAPI·SQLModel API와 데이터 모델링</li><li>전자결재·근태·프로젝트·계약·일정 통합</li></ul></article>
+        <article><h3>검색·AI</h3><ul><li>명함 OCR과 AI 기반 연락처 필드 구조화</li><li>HNSW 벡터 검색과 GIN trigram 검색 결합</li><li>bge-m3·llama.cpp를 문서 권한 흐름에 통합</li></ul></article>
+        <article><h3>품질·운영</h3><ul><li>승인 상태와 금액 무결성 자동 검증</li><li>Pytest·Vitest·Playwright 테스트 구성</li><li>사내 인프라 CI/CD와 컨테이너 운영</li><li>Grafana 커스텀 대시보드 설계·구성과 서버·컨테이너·GPU 모니터링</li></ul></article>
+      </div>
+    </section>
+
+    <footer><strong>김진혁</strong> · Head of Advanced Development / AI Integration Full-Stack Engineer · kimjinhyuk2@gmail.com · jinhyuk.kim</footer>
+  </div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const dots = document.querySelector('.dots');
+  let current = 0;
+
+  slides.forEach((_, index) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = `dot${index === 0 ? ' active' : ''}`;
+    dot.setAttribute('aria-label', `${index + 1}번 화면 보기`);
+    dot.addEventListener('click', () => showSlide(index));
+    dots.appendChild(dot);
+  });
+
+  function showSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => slide.classList.toggle('active', slideIndex === current));
+    [...dots.children].forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === current));
+  }
+
+  document.querySelector('.prev').addEventListener('click', () => showSlide(current - 1));
+  document.querySelector('.next').addEventListener('click', () => showSlide(current + 1));
+  document.querySelector('.carousel').addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft') showSlide(current - 1);
+    if (event.key === 'ArrowRight') showSlide(current + 1);
+  });
+  document.querySelector('.carousel').tabIndex = 0;
+
+  document.querySelectorAll('.filter').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.filter').forEach(item => item.classList.remove('active'));
+      button.classList.add('active');
+      const category = button.dataset.filter;
+      document.querySelectorAll('.shot').forEach(card => {
+        card.hidden = category !== 'all' && card.dataset.category !== category;
+      });
+    });
+  });
+</script>
+</body>
+</html>

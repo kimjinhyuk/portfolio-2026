@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김진혁 | 프로젝트 포트폴리오</title>
+<meta name="description" content="김진혁의 프로젝트 포트폴리오: 드론 통합 관제 시스템, 그룹웨어·ERP, Vitamate 영양제 추천 서비스.">
+<style>
+  :root {
+    --paper: #f3f1e9;
+    --ink: #181b19;
+    --muted: #686d69;
+    --line: #cfc9bb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+    line-height: 1.5;
+  }
+  main { max-width: 880px; margin: 0 auto; padding: clamp(3rem, 8vw, 6rem) 1.5rem; }
+  .eyebrow { font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0; }
+  h1 { font-size: clamp(2.2rem, 1.4rem + 4vw, 4rem); line-height: 1.05; letter-spacing: -.03em; margin: .5rem 0 3rem; }
+  ol { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
+  li { border-bottom: 1px solid var(--line); }
+  a {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr auto;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1.6rem .25rem;
+    color: inherit;
+    text-decoration: none;
+    transition: background-color 150ms ease, padding-left 150ms ease;
+  }
+  a:hover, a:focus-visible { background: color-mix(in oklab, var(--accent) 14%, transparent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .num { font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 700; }
+  .title { font-size: clamp(1.25rem, 1rem + 1vw, 1.6rem); font-weight: 700; letter-spacing: -.02em; display: block; }
+  .meta { color: var(--muted); font-size: .95rem; }
+  .arrow { color: var(--accent); font-size: 1.4rem; }
+  footer { margin-top: 3rem; color: var(--muted); font-size: .9rem; }
+  @media (max-width: 520px) { a { grid-template-columns: 2.25rem 1fr; } .arrow { display: none; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Project Portfolio · 2026</p>
+  <h1>김진혁</h1>
+  <ol>
+    <li><a href="2026-09-20-drone-control-portfolio.html" style="--accent:#1f8f87">
+      <span class="num">01</span>
+      <span><span class="title">드론 통합 관제 시스템</span><span class="meta">임무 계획 · 드론 제어 · 센서 데이터 · AI 검출</span></span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a></li>
+    <li><a href="2026-09-20-erp-groupware-portfolio.html" style="--accent:#d9541e">
+      <span class="num">02</span>
+      <span><span class="title">그룹웨어 · ERP</span><span class="meta">전자결재 · 인사·근태 · 로컬 AI 문서 검색 · 명함 OCR</span></span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a></li>
+    <li><a href="2026-09-29-vitamate-nutrition-portfolio.html" style="--accent:#087b75">
+      <span class="num">03</span>
+      <span><span class="title">Vitamate 영양제 추천 서비스</span><span class="meta">AI 개인화 추천 · React · 특허출원 2건 공동발명</span></span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a></li>
+  </ol>
+  <footer>김진혁 · jinhyuk.kim</footer>
+</main>
+</body>
+</html>

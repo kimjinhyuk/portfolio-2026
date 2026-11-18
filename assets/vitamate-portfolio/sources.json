@@ -1,0 +1,99 @@
+[
+  {
+    "asset": "01-onboarding.webp",
+    "source": "data/resume/vitamate/Screenshot 2023-07-11 at 6.59.46 PM.png",
+    "crop": [
+      216,
+      417,
+      1016,
+      871
+    ],
+    "size": [
+      800,
+      454
+    ]
+  },
+  {
+    "asset": "02-recommendation-report.webp",
+    "source": "data/resume/vitamate/Screenshot 2023-07-11 at 7.00.50 PM.png",
+    "crop": [
+      239,
+      328,
+      1209,
+      1230
+    ],
+    "size": [
+      970,
+      902
+    ]
+  },
+  {
+    "asset": "03-health-analysis.webp",
+    "source": "data/resume/vitamate/Screenshot 2023-07-11 at 7.01.08 PM.png",
+    "crop": null,
+    "size": [
+      1008,
+      1423
+    ]
+  },
+  {
+    "asset": "04-health-history.webp",
+    "source": "data/resume/vitamate/Screenshot 2023-07-11 at 7.01.26 PM.png",
+    "crop": null,
+    "size": [
+      999,
+      1921
+    ]
+  },
+  {
+    "asset": "05-subscription-selection.webp",
+    "source": "data/resume/vitamate/Screenshot 2023-07-11 at 7.12.11 PM.png",
+    "crop": [
+      303,
+      362,
+      1264,
+      1780
+    ],
+    "size": [
+      961,
+      1418
+    ]
+  },
+  {
+    "asset": "06-recommended-products.webp",
+    "source": "data/resume/vitamate/Screenshot 2023-07-11 at 7.13.36 PM.png",
+    "crop": [
+      280,
+      760,
+      1178,
+      1600
+    ],
+    "size": [
+      898,
+      840
+    ]
+  },
+  {
+    "asset": "07-service-status.webp",
+    "source": "data/resume/vitamate/Screenshot 2023-10-05 at 10.44.28 AM.png",
+    "crop": null,
+    "size": [
+      971,
+      900
+    ]
+  },
+  {
+    "asset": "08-genetic-summary.webp",
+    "source": "data/resume/vitamate/Screenshot 2023-10-05 at 10.44.57 AM.png",
+    "crop": [
+      0,
+      205,
+      599,
+      699
+    ],
+    "size": [
+      599,
+      494
+    ]
+  }
+]
